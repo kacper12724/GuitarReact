@@ -1,0 +1,4 @@
+export const FETCH_TABLATURES = "FETCH_TABLATURES"
+export const TYPE_TITLE = "TYPE_TITLE"
+export const CHOOSE_TYPE = "CHOOSE_TYPE"
+export const CHOOSE_SEARCHBY = "CHOOSE_SEARCHBY"

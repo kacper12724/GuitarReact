@@ -1,0 +1,37 @@
+.Tablatures{
+    width: 50%;
+    margin: auto;
+}
+
+.TablatureElement{
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    text-align: left;
+    display: grid;
+    padding: 0.5rem;
+}
+
+.TablatureElement h1 {
+    margin: 0px;
+    color: white;
+    background: #ff2058;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.TablatureSongTitle{
+    color: #ff2058;
+    text-align: center;
+}
+
+.TablatureSongType{
+    color: blue;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 760px) {
+    .Tablatures{
+        width: 100%;
+    }
+}
