@@ -8,6 +8,8 @@ import * as actionTypes from '../../store/actions/actionTypes';
 const TAB_TYPES = ["Chords", "Bass", "Guitar", "Player"];
 const SEARCHBY_SONG = 'song';
 const SEARCHBY_ARTIST = 'artist';
+const ENTER_SONG_NAME_TEXT = 'Please enter song name:';
+const ENTER_ARTIST_NAME_TEXT = 'Please enter artist name:';
 
 class TablatureSearch extends Component {
     render() {
@@ -53,7 +55,7 @@ class TablatureSearch extends Component {
                     }}>
                         <label
                             className={styles.SearchLabel}>
-                            {searchBy === SEARCHBY_ARTIST ? "Please enter artist name:" : "Please enter song name:"}
+                            {searchBy === SEARCHBY_ARTIST ? ENTER_ARTIST_NAME_TEXT : ENTER_SONG_NAME_TEXT}
                             <input
                                 type="text"
                                 className={styles.SearchInput}

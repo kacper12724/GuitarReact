@@ -1,0 +1,16 @@
+.PageScroller{
+    position: fixed;
+    font-family: inherit;
+    font-size: 8px;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 2px;
+    color: white;
+    width: 50px;
+    height: 11px;
+    right: 10px;
+    bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}

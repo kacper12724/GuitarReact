@@ -11,6 +11,7 @@ const initialState = {
     enteredType: '',
     searchBy: SEARCHBY_SONG,
     formIsValid: false,
+    userDidAction: false,
     loadedSongs: []
 }
 
@@ -28,6 +29,21 @@ const insertTablatureToDisplay = (loadedTablatures, element) => {
     });
 }
 
+const handleData = (fetchedTablatures, loadedTablatures, enteredText, enteredType, getState) => {
+    if (getState().searchBy === SEARCHBY_SONG) {
+        fetchedTablatures.map(el => {
+            if (el.tabTypes.includes(enteredType) || enteredType === '')
+                if (el.title.includes(enteredText))
+                    insertTablatureToDisplay(loadedTablatures, el);
+        })
+    } else {
+        fetchedTablatures.map(el => {
+            if (el.tabTypes.includes(enteredType) || enteredType === '')
+                insertTablatureToDisplay(loadedTablatures, el);
+        })
+    }
+}
+
 export const loadTablatures = (enteredText, enteredType) => {
     return (dispatch, getState) => {
         const URL = getState().searchBy === SEARCHBY_SONG ? SEARCH_BY_SONG_NAME_URL_PREFIX : SEARCH_BY_ARTIST_URL_PREFIX;
@@ -35,18 +51,7 @@ export const loadTablatures = (enteredText, enteredType) => {
             .then(res => {
                 const fetchedTablatures = res.data;
                 const loadedTablatures = [];
-                if (getState().searchBy === SEARCHBY_SONG) {
-                    fetchedTablatures.map(el => {
-                        if (el.tabTypes.includes(enteredType) || enteredType === '')
-                            if (el.title.includes(enteredText))
-                                insertTablatureToDisplay(loadedTablatures, el);
-                    })
-                } else {
-                    fetchedTablatures.map(el => {
-                        if (el.tabTypes.includes(enteredType) || enteredType === '')
-                            insertTablatureToDisplay(loadedTablatures, el);
-                    })
-                }
+                handleData(fetchedTablatures, loadedTablatures, enteredText, enteredType, getState);
                 dispatch(loadTablaturesSync(loadedTablatures));
             })
     }
@@ -69,7 +74,8 @@ const correctTabNaming = (tabType) => {
 const fetchTablatures = (state, loadedSongs) => {
     return {
         ...state,
-        loadedSongs: loadedSongs
+        loadedSongs: loadedSongs,
+        userDidAction: true
     }
 }
 
